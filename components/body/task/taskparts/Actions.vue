@@ -4,6 +4,7 @@ const { $t } = inject("nls");
 const task = inject("task");
 const todos = inject("todos");
 const openTaskEdit = ref(false);
+const openDeleteModal = ref(false);
 const isTodo = computed(() => task.isTodo);
 const isInProgress = computed(() => task.isInProgress);
 const isDone = computed(() => task.isDone);
@@ -17,10 +18,13 @@ const moveAndSave = (to) => {
 const closeTaskEdit = () => {
   openTaskEdit.value = false;
 };
-const removeTask = () => {
-  // ask for confirmation
-  // then remove task if confirmed
-  // confir
+
+const removeTask = (conf) => {
+  if (conf) {
+    // remove task from todos
+    todos.removeTodo(task.id);
+  }
+  openDeleteModal.value = false;
   // trigger Ai insights
 };
 const menuItems: DropdownMenuItem[] = [
@@ -84,14 +88,17 @@ const menuItems: DropdownMenuItem[] = [
         />
       </template>
     </UModal>
-
-    <UButton
-      class="cursor-pointer"
-      color="neutral"
-      variant="ghost"
-      icon="fluent:delete-16-filled"
-      @click="todos.removeTodo(task.id)"
-    />
+    <UModal v-model:open="openDeleteModal" :title="$t('confirmDeletion')">
+      <UButton
+        class="cursor-pointer"
+        color="neutral"
+        variant="ghost"
+        icon="fluent:delete-16-filled"
+      />
+      <template #body>
+        <BodyTaskTodoDeleteModal @update:confirm-deletion="removeTask" />
+      </template>
+    </UModal>
   </UButtonGroup>
 </template>
 <style scoped></style>
