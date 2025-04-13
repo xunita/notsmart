@@ -32,11 +32,13 @@ watch(
 );
 
 const setDueDate = (newDate: CalendarDate) => {
-  dueDate.value = new Date(newDate.year, newDate.month - 1, newDate.day);
-  emits("update:duedate", {
-    value: dueDate.value,
-    key: "dueDate",
-  });
+  if (newDate) {
+    dueDate.value = new Date(newDate.year, newDate.month - 1, newDate.day);
+    emits("update:duedate", {
+      value: dueDate.value,
+      key: "dueDate",
+    });
+  }
 };
 </script>
 <template>
