@@ -35,7 +35,7 @@ provide("task", task);
       >
         <BodyTaskTaskpartsDueDate />
         <!-- task.hasDueDateAiInsight -->
-        <BodyTaskTaskpartsAiDueDateInsights v-if="true" />
+        <BodyTaskTaskpartsAiDueDateInsights />
         <!-- AI notice ? -->
       </div>
       <div v-if="task.hasTags" class="todo-base-tags">
