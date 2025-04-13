@@ -1,5 +1,6 @@
 import { labels } from "~/constants/label";
 import { taskStatus } from "~/constants/task";
+import { getDayDifference } from "~/utils/date";
 import Message from "./message";
 
 class Todo {
@@ -48,9 +49,15 @@ class Todo {
       : null; // assignment of the task
   }
   get isOverdue() {
-    return (
-      this.dueDate && this.dueDate.getTime() < new Date(Date.now()).getTime()
-    );
+    return this.dueDate && getDayDifference(this.dueDate) === -1;
+  }
+
+  get isDueToday() {
+    return this.dueDate && getDayDifference(this.dueDate) === 0;
+  }
+
+  get dueDayDifference() {
+    return this.dueDate && getDayDifference(this.dueDate);
   }
 
   get getStatus() {
