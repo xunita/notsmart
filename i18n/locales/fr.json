@@ -52,5 +52,10 @@
   "taskAdded": "Tâche ajoutée",
   "taskUpdated": "Tâche mise à jour",
   "taskDeleted": "Tâche supprimée",
-  "taskTitleRequired": "Le titre de la tâche est requis"
+  "taskTitleRequired": "Le titre de la tâche est requis",
+  "daysL": "jours",
+  "daysLeftL": "jours restants",
+  "overdue": "date d'échéance dépassée",
+  "dueToday": "Échéance aujourd'hui",
+  "stillOnTime": "Toujours à temps"
 }

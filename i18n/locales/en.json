@@ -52,5 +52,10 @@
   "taskAdded": "Task added",
   "taskUpdated": "Task updated",
   "taskDeleted": "Task deleted",
-  "taskTitleRequired": "Task title is required"
+  "taskTitleRequired": "Task title is required",
+  "daysL": "days",
+  "daysLeftL": "days left",
+  "overdue": "Overdue",
+  "dueToday": "Due today",
+  "stillOnTime": "Still on time"
 }
