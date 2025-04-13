@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { $t } = inject("nls");
+const toast = useToast();
 const task = inject("task");
 const emits = defineEmits(["update:tags"]);
 const editMode = inject("editMode");
@@ -21,8 +22,16 @@ const addTag = () => {
     tagInput.value.trim() !== "" &&
     !tags.value.includes(tagInput.value.trim())
   ) {
-    tags.value.push(tagInput.value.trim());
-    tagInput.value = "";
+    if (tags.value.length < 10) {
+      tags.value.push(tagInput.value.trim());
+      tagInput.value = "";
+    } else {
+      toast.clear();
+      toast.add({
+        title: $t("maxTagsAllowedReached"),
+        color: "error",
+      });
+    }
   }
 };
 const removeTag = (tag) => {
@@ -46,7 +55,7 @@ const removeTag = (tag) => {
       <div
         v-for="tag in tags"
         :key="tag + 'newTask'"
-        class="text-xs bg-blue-100/25 py-1 px-2.5 rounded m-2 flex items-center gap-1"
+        class="text-xs bg-blue-100/25 py-1 px-2.5 rounded m-1.5 flex items-center gap-1"
       >
         <span class="font-semibold text-xs"> #{{ tag }} </span>
         <UButton
