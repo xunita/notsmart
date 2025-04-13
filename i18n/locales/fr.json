@@ -57,5 +57,8 @@
   "daysLeftL": "jours restants",
   "overdue": "date d'échéance dépassée",
   "dueToday": "Échéance aujourd'hui",
-  "stillOnTime": "Toujours à temps"
+  "stillOnTime": "Toujours à temps",
+  "task": "Tâche",
+  "tasks": "Tâches",
+  "maxTagsAllowedReached": "Nombre maximum d'étiquettes atteint"
 }

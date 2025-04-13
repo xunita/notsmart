@@ -57,5 +57,8 @@
   "daysLeftL": "days left",
   "overdue": "Overdue",
   "dueToday": "Due today",
-  "stillOnTime": "Still on time"
+  "stillOnTime": "Still on time",
+  "maxTagsAllowedReached": "Maximum number of tags reached",
+  "task": "Task",
+  "tasks": "Tasks"
 }
