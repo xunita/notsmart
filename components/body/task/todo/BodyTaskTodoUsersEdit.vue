@@ -46,7 +46,7 @@ const removeUser = (user) => {
       <div
         v-for="user in users"
         :key="user + 'newTask'"
-        class="text-xs bg-blue-100/25 py-1 px-2.5 rounded m-2 flex items-center gap-1"
+        class="text-xs bg-blue-100/25 py-1 px-2.5 rounded m-1.5 flex items-center gap-1"
       >
         <span class="font-semibold text-xs"> @{{ user }} </span>
         <UButton

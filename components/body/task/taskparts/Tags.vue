@@ -6,7 +6,7 @@ const task = inject("task");
     <span
       v-for="tag in task.tags"
       :key="tag + task.id"
-      class="text-xs font-semibold bg-blue-100/25 py-1 px-2.5 rounded-full m-1"
+      class="text-xs font-semibold bg-blue-100/25 py-1 px-2.5 rounded-full m-1.5"
     >
       #{{ tag }}</span
     >
