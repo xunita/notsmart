@@ -19,12 +19,12 @@ const applyCover = (e, deletion = false) => {
       if (data.success) {
         src.value = data.base64;
         toast.add({
-          title: $t("imageLoaded"),
+          title: $t("coverLoaded"),
         });
       } else {
         src.value = "/resources/img/cover.png";
         toast.add({
-          title: $t("imageError"),
+          title: $t("coverError"),
           color: "primary",
         });
       }
