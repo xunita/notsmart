@@ -85,7 +85,7 @@ class Todo {
   update(data = {}) {
     for (const key in data) {
       if (key !== "id" && Object.hasOwn(this, key)) {
-        this[key] = data[key] || this[key];
+        this[key] = data[key];
       }
     }
     this.updatedAt = new Date(Date.now()); // updated at timestamp
