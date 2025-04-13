@@ -48,7 +48,7 @@ const removeTag = (tag) => {
         :key="tag + 'newTask'"
         class="text-xs bg-blue-100/25 py-1 px-2.5 rounded m-2 flex items-center gap-1"
       >
-        <span class="font-semibold text-xs"> @{{ tag }} </span>
+        <span class="font-semibold text-xs"> #{{ tag }} </span>
         <UButton
           class="rounded-full cursor-pointer"
           size="xs"
