@@ -121,12 +121,12 @@ class Todo {
     return this.aiMessages.find((m) => m.id === id) ?? null;
   };
 
-  getLast10Messages = () => {
+  getLast5Messages = () => {
     return this.aiMessages.slice(-10);
   };
 
   buildPrompt = (prompt) => {
-    const last5Msg = this.getLast10Messages();
+    const last5Msg = this.getLast5Messages();
     const prompts = [];
     for (const msg of last5Msg) {
       if (msg.sender === "user") {

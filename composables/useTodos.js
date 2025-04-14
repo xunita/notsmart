@@ -117,12 +117,12 @@ export const useTodos = () => {
     return _aiLast5Messages.value.find((m) => m.id === id) ?? null;
   };
 
-  const getLast10Messages = () => {
+  const getLast5Messages = () => {
     return _aiLast5Messages.value.slice(-10);
   };
 
   const buildPrompt = (prompt) => {
-    const last5Msg = getLast10Messages();
+    const last5Msg = getLast5Messages();
     const prompts = [];
     for (const msg of last5Msg) {
       if (msg.sender === "user") {
@@ -276,7 +276,7 @@ export const useTodos = () => {
     search,
     addMessage,
     getMessage,
-    getLast10Messages,
+    getLast5Messages,
     buildPrompt,
     getTodo,
     hasTodo,
