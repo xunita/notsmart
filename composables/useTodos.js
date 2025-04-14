@@ -118,7 +118,7 @@ export const useTodos = () => {
   };
 
   const getLast10Messages = () => {
-    return _aiLast5Messages.value.slice(-10);
+    return _aiLast5Messages.value.slice(-20);
   };
 
   const buildPrompt = (prompt) => {
