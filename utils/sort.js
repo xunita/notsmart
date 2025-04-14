@@ -1,12 +1,12 @@
 export const sortTodoByDateDesc = (a, b) => {
-  const aDate = a.updatedAt;
-  const bDate = b.updatedAt;
+  const aDate = a.createdAt;
+  const bDate = b.createdAt;
   return bDate - aDate;
 };
 
 export const sortTodoByDateAsc = (a, b) => {
-  const aDate = a.updatedAt;
-  const bDate = b.updatedAt;
+  const aDate = a.createdAt;
+  const bDate = b.createdAt;
   return aDate - bDate;
 };
 
@@ -39,8 +39,8 @@ export const sortTodoByTitleZA = (a, b) => {
 };
 
 export const sortsFunctions = {
-  "updatedAt-desc": sortTodoByDateDesc,
-  "updatedAt-asc": sortTodoByDateAsc,
+  "createdAt-desc": sortTodoByDateDesc,
+  "createdAt-asc": sortTodoByDateAsc,
   "dueDate-desc": sortTodoByDueDateDesc,
   "dueDate-asc": sortTodoByDueDateAsc,
   "title-asc": sortTodoByTitleAZ,

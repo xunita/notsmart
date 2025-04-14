@@ -1,6 +1,6 @@
 export const sortByArray = [
-  "updatedAt-desc",
-  "updatedAt-asc",
+  "createdAt-desc",
+  "createdAt-asc",
   "dueDate-desc",
   "dueDate-asc",
   "title-asc",

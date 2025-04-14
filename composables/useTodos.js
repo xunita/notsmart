@@ -13,7 +13,7 @@ export const useTodos = () => {
   );
   const _aiLast5Messages = storage.useLocalStorage("nst-aiLast5Messages", []);
   const _search = storage.useLocalStorage("nst-search", "");
-  const _sortBy = storage.useLocalStorage("nst-sortBy", "updatedAt-desc");
+  const _sortBy = storage.useLocalStorage("nst-sortBy", "createdAt-desc");
   const _todos = useState("_todos", () => new Map());
   // load todos from localStorage
   const loadStorageTodos = () => {
