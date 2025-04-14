@@ -5,6 +5,7 @@ const task = inject("task");
 const todos = inject("todos");
 const openTaskEdit = ref(false);
 const openDeleteModal = ref(false);
+const toast = useToast();
 const isTodo = computed(() => task.isTodo);
 const isInProgress = computed(() => task.isInProgress);
 const isDone = computed(() => task.isDone);
@@ -17,6 +18,7 @@ const moveAndSave = (to) => {
 };
 const closeTaskEdit = () => {
   openTaskEdit.value = false;
+  toast.clear();
 };
 
 const removeTask = (conf) => {

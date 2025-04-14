@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { $t } = inject("nls");
 const todos = inject("todos");
+const toast = useToast();
 const openTaskEdit = ref(false);
 const enableSearchAndSort = ref(false);
 watch(
@@ -12,6 +13,7 @@ watch(
 );
 const closeTaskEdit = () => {
   openTaskEdit.value = false;
+  toast.clear();
 };
 </script>
 <template>
