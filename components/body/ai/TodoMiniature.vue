@@ -22,7 +22,7 @@ const closeTask = () => {
       color="neutral"
       variant="solid"
       icon="material-symbols:close-rounded"
-      class="rounded-full m-1 p-2 self-end cursor-pointer absolute z-10 top-0 right-0"
+      class="rounded-full m-1 p-1 self-end cursor-pointer absolute z-10 top-0 right-0"
       @click="closeTask"
     />
   </div>

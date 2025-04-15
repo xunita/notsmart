@@ -48,9 +48,9 @@ const closeTask = () => {
       </div>
       <div
         v-else
-        class="ai-messages-empty font-semibold text-sm italic text-gray-600/95 px-4"
+        class="ai-messages-empty font-semibold text-sm italic text-center text-gray-600/95 px-4"
       >
-        <span>{{ `- ${$t("startAConvWithAi")} -` }}</span>
+        <span>{{ ` ${$t("startAConvWithAi")} ` }}</span>
       </div>
     </div>
   </div>

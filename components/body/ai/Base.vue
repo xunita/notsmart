@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="min-w-64 h-full flex flex-col items-center overflow-hidden">
+  <div class="max-w-96 h-full flex flex-col items-center overflow-hidden">
     <div>
       <UIcon name="healthicons:artificial-intelligence" size="18" /> {{ ` ` }}
     </div>
