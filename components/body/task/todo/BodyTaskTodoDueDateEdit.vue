@@ -60,8 +60,8 @@ const setDueDate = (newDate: CalendarDate) => {
     >
       <UCalendar
         v-model="date"
-        class="max-w-64"
-        size="xs"
+        class="max-w-96"
+        size="sm"
         @update:modelValue="setDueDate"
       />
     </div>
