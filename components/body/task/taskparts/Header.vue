@@ -14,12 +14,7 @@ const inAi = inject("inAi");
       <UDrawer class="z-20" :handle="false" direction="right">
         <BodyAskAIButton label="ask" variant="solid" size="sm" />
         <template #body>
-          <div class="min-w-80 h-full flex flex-col items-center">
-            <UIcon name="healthicons:artificial-intelligence" size="18" />
-            <div class="w-full h-full">
-              <BodyAiBase />
-            </div>
-          </div>
+          <BodyAiBase />
         </template>
       </UDrawer>
     </div>

@@ -28,7 +28,7 @@ const props = defineProps({
       class="text-[13px] rounded-md p-2"
       :class="{
         'bg-logo-color': message.isFromAI(),
-        'bg-gray-100 dark:bg-gray-700/50': message.isFromUser(),
+        'bg-gray-100/80': message.isFromUser(),
       }"
     >
       <div
