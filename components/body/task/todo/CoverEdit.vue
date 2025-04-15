@@ -64,9 +64,9 @@ const applyCover = (e, deletion = false) => {
         placeholder
         :src="src"
         alt="cover"
-        class="todo-base-header-img w-full h-14 object-cover rounded"
+        class="todo-base-header-img w-full h-10 object-cover rounded"
       />
-      <div class="flex items-center space-x-2 absolute top-1 right-1">
+      <div class="flex items-center space-x-2 absolute top-1.5 right-1.5">
         <UButton
           class="rounded cursor-pointer"
           size="sm"
