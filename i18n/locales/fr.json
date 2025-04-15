@@ -46,7 +46,7 @@
   "noDueDate": "Pas de date d'échéance",
   "addDueDate": "Ajouter une date d'échéance",
   "tags": "Étiquettes",
-  "addTag": "Ajouter une étiquette",
+  "addTag": "Ajouter des étiquettes (10 max)",
   "contributors": "Contributeurs",
   "addContributors": "Ajouter des contributeurs",
   "taskAdded": "Tâche ajoutée",
