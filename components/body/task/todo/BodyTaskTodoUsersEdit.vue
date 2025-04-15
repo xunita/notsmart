@@ -34,13 +34,24 @@ const removeUser = (user) => {
     <UFormField :label="$t('contributors')">
       <UInput
         v-model="userInput"
+        :ui="{ trailing: 'pe-0' }"
         leading-icon="i-lucide-at-sign"
         :placeholder="$t('addContributors')"
         class="border border-blue-100 rounded sm:w-2/4 max-sm:w-full"
         color="neutral"
         variant="none"
         @keyup.enter="addUser()"
-      />
+      >
+        <template #trailing>
+          <UButton
+            color="neutral"
+            variant="link"
+            class="cursor-pointer"
+            icon="material-symbols:add-circle"
+            @click="addUser()"
+          />
+        </template>
+      </UInput>
     </UFormField>
     <div class="flex items-center space-x-3 flex-wrap">
       <div
