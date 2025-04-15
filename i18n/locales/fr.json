@@ -62,5 +62,6 @@
   "tasks": "Tâches",
   "maxTagsAllowedReached": "Nombre maximum d'étiquettes atteint",
   "aiMessagePlaceholder": "Posez moi une question sur les tâches...",
-  "startAConvWithAi": "Démarrer une conversation avec l'assistant de tâches"
+  "startAConvWithAi": "Démarrer une conversation avec l'assistant de tâches",
+  "clearLocalstorageIfNeedMoreSpace": "Effacer le stockage local (localstorage) si vous avez besoin de plus d'espace car cette application est juste une démo et ne stocke pas de données sur un serveur."
 }

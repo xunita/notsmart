@@ -64,5 +64,6 @@
   "expand": "Expand",
   "collapse": "Collapse",
   "aiMessagePlaceholder": "Ask me something about tasks...",
-  "startAConvWithAi": "Start a conversation with the task's assistant"
+  "startAConvWithAi": "Start a conversation with the task's assistant",
+  "clearLocalstorageIfNeedMoreSpace": "Clear local storage (localstorage) if you need more space as this app is just a demo and doesn't save data to a server"
 }
