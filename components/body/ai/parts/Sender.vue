@@ -11,6 +11,7 @@ const sendMessage = () => {
   if (!todos.aiIsThinking.value) {
     if (message.value.trim().length) {
       console.log("Sending message:", message.value);
+      message.value = "";
     }
   }
   setTimeout(() => {

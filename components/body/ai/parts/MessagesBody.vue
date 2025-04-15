@@ -3,7 +3,6 @@ const todos = inject("todos");
 const messages = computed(() => {
   return todos.aiLast5Messages.value;
 });
-console.log("message ai: ", messages.value);
 </script>
 <template>
   <div

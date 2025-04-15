@@ -50,7 +50,6 @@ const props = defineProps({
         }"
         class="font-semibold text-[13px]"
       >
-        {{ console.log(message) }}
         <span>{{ message.content }}</span>
         <!-- <div v-if="message.isFromAI()" v-html="message.content"></div>
         <span v-else>{{ message.content }}</span> -->
