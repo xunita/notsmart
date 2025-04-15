@@ -22,7 +22,7 @@ const closeAlert = (close) => {
         class="w-fit m-2 font-semibold text-center"
         :description="$t('clearLocalstorageIfNeedMoreSpace')"
         color="neutral"
-        variant="outline"
+        variant="solid"
         close
         @update:open="closeAlert"
       />
