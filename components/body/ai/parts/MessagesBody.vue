@@ -1,19 +1,57 @@
 <script setup lang="ts">
 const todos = inject("todos");
+const { $t } = inject("nls");
+const task = inject("task");
+const noSpecificTask = ref(false);
 const messages = computed(() => {
   return todos.aiLast5Messages.value;
 });
+const closeTask = () => {
+  noSpecificTask.value = true;
+};
 </script>
 <template>
   <div
     id="notsmarttodos-chat"
-    class="flex flex-col w-ful h-full space-y-4 overflow-y-auto p-4"
+    :class="{
+      'py-4': !task,
+      'overflow-y-auto': messages.length,
+    }"
+    class="w-ful h-full relative"
   >
-    <BodyAiPartsMessage
-      v-for="msg of messages"
-      :key="msg.id + 'ai-msg'"
-      class="max-w-96"
-      :message="msg"
-    />
+    <div
+      v-if="task && !noSpecificTask"
+      :class="{
+        'sticky top-0': messages.length,
+        'absolute w-full': !messages.length,
+      }"
+      class="bg-white z-10 pt-4"
+    >
+      <BodyAiTodoMiniature in-ai :id="task.id" @update:no-task="closeTask" />
+    </div>
+    <div
+      :class="{
+        'overflow-y-auto py-4': !task || noSpecificTask,
+      }"
+      class="ai-messages w-ful h-full flex flex-col items-center justify-center"
+    >
+      <div
+        v-if="messages.length"
+        class="ai-messages-content w-ful h-full flex flex-col space-y-3"
+      >
+        <BodyAiPartsMessage
+          v-for="msg of messages"
+          :key="msg.id + 'ai-msg'"
+          class="max-w-96"
+          :message="msg"
+        />
+      </div>
+      <div
+        v-else
+        class="ai-messages-empty font-semibold text-sm italic text-gray-600/95 px-4"
+      >
+        <span>{{ `- ${$t("startAConvWithAi")} -` }}</span>
+      </div>
+    </div>
   </div>
 </template>

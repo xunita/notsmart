@@ -3,3 +3,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+div:has(> div > div.ai-drawer-body) {
+  overflow: hidden;
+  height: 100%;
+}
+div:has(> div.ai-drawer-body) {
+  height: 100%;
+}

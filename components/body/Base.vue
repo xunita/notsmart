@@ -27,10 +27,10 @@ const closeTaskEdit = () => {
             <BodyTaskTodoNewTask @update:close-task-edit="closeTaskEdit" />
           </template>
         </UModal>
-        <UDrawer :handle="false" direction="right">
+        <UDrawer class="z-20 ai-drawer" :handle="false" direction="right">
           <BodyAskAIButton label="ask" />
           <template #body>
-            <BodyAiBase />
+            <BodyAiBase class="ai-drawer-body" />
           </template>
         </UDrawer>
       </div>

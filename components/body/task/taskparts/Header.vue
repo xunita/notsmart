@@ -11,10 +11,10 @@ const inAi = inject("inAi");
       class="todo-base-header-img w-full h-10 object-cover rounded-t-md"
     />
     <div v-if="!inAi" class="absolute top-1.5 right-1.5">
-      <UDrawer class="z-20" :handle="false" direction="right">
+      <UDrawer class="z-20 ai-drawer" :handle="false" direction="right">
         <BodyAskAIButton label="ask" variant="solid" size="sm" />
         <template #body>
-          <BodyAiBase />
+          <BodyAiBase class="ai-drawer-body" />
         </template>
       </UDrawer>
     </div>

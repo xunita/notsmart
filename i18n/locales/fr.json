@@ -61,5 +61,6 @@
   "task": "Tâche",
   "tasks": "Tâches",
   "maxTagsAllowedReached": "Nombre maximum d'étiquettes atteint",
-  "aiMessagePlaceholder": "Posez moi une question sur les tâches..."
+  "aiMessagePlaceholder": "Posez moi une question sur les tâches...",
+  "startAConvWithAi": "Démarrer une conversation avec l'IA"
 }

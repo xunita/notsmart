@@ -12,6 +12,7 @@ const sendMessage = () => {
     if (message.value.trim().length) {
       console.log("Sending message:", message.value);
       message.value = "";
+      messageKey.value++; // Update the key to re-render the input
     }
   }
   setTimeout(() => {
@@ -34,7 +35,7 @@ onMounted(() => {
       'border border-blue-100/75': !focused,
       'border border-blue-100': focused,
     }"
-    class="w-full rounded-bl-md rounded-br-md bg-white bg-dark-theme flex items-center relative"
+    class="w-full rounded-bl-md rounded-br-md bg-white bg-dark-theme flex items-center relative h-fit"
   >
     <div
       id="nst-ai-sender-input"

@@ -35,7 +35,7 @@ provide("inAi", inAi);
       >
         <div
           :class="{
-            'max-h-24 overflow-hidden after:absolute after:bottom-0 after:left-0 after:w-full after:h-10 after:bg-gradient-to-t after:from-white after:to-transparent':
+            'max-h-10 overflow-hidden after:absolute after:bottom-0 after:left-0 after:w-full after:h-10 after:bg-gradient-to-t after:from-white after:to-transparent':
               !task.isExpanded && inAi,
           }"
           class="todo-base-collapsable-content-inner flex flex-col space-y-2 w-full"
@@ -69,7 +69,7 @@ provide("inAi", inAi);
         <UButton
           v-if="inAi"
           :class="{
-            'absolute bottom-4': !task.isExpanded,
+            'absolute bottom-0': !task.isExpanded,
           }"
           class="cursor-pointer self-center rounded-full"
           :icon="
@@ -77,7 +77,7 @@ provide("inAi", inAi);
               ? 'ic:sharp-keyboard-arrow-up'
               : 'ic:sharp-keyboard-arrow-down'
           "
-          size="sm"
+          size="xs"
           color="neutral"
           variant="solid"
           :label="task.isExpanded ? $t('collapse') : $t('expand')"

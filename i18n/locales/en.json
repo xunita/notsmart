@@ -63,5 +63,6 @@
   "tasks": "Tasks",
   "expand": "Expand",
   "collapse": "Collapse",
-  "aiMessagePlaceholder": "Ask me something about tasks..."
+  "aiMessagePlaceholder": "Ask me something about tasks...",
+  "startAConvWithAi": "Start a conversation with the task AI"
 }

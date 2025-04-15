@@ -5,7 +5,7 @@ const task = inject("task");
   <div class="todo-base-description flex flex-col space-y-1">
     <div class="todo-base-description-content">
       <UIcon name="circum:text-align-left" class="mr-1.5 size-5" />
-      <span>{{ task.description }}</span>
+      <span class="text-sm">{{ task.description }}</span>
     </div>
     <!-- <div class="todo-base-description-files flex items-center space-x-1.5">
       <UIcon name="tabler:paperclip" class="size-5" />
