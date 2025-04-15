@@ -57,7 +57,7 @@ provide("task", task);
             <BodyTaskTaskpartsTags />
           </div>
           <!-- task.hasAiInsights -->
-          <div v-if="!inAi" class="todo-base-AI-insight w-full">
+          <div v-if="task.hasAiInsights && !inAi" class="todo-base-AI-insight w-full">
             <BodyTaskTaskpartsAIInsights />
           </div>
         </div>
