@@ -18,7 +18,7 @@ const task = inject("task");
     </div>
     <UButton
       :class="{
-        'absolute bottom-5': !task.isAiInsightsExpanded,
+        'absolute bottom-4': !task.isAiInsightsExpanded,
       }"
       class="cursor-pointer rounded-full"
       :icon="
@@ -32,7 +32,6 @@ const task = inject("task");
       :label="$t('aiInsights')"
       @click="task.expandAiInsights(!task.isAiInsightsExpanded)"
     />
-    <div></div>
   </div>
 </template>
 <style scoped></style>

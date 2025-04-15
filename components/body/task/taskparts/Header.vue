@@ -7,9 +7,9 @@ const task = inject("task");
       placeholder
       :src="task.headImg"
       :alt="task.title"
-      class="todo-base-header-img w-full h-14 object-cover rounded-t-md"
+      class="todo-base-header-img w-full h-10 object-cover rounded-t-md"
     />
-    <div class="absolute top-1 right-1">
+    <div class="absolute top-1.5 right-1.5">
       <UDrawer class="z-20" :handle="false" direction="right">
         <BodyAskAIButton label="ask" variant="solid" size="sm" />
         <template #body>

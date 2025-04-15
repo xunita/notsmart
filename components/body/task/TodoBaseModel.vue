@@ -1,9 +1,14 @@
 <script setup lang="ts">
 const todos = inject("todos");
+const { lang, $t } = inject("nls");
 const props = defineProps({
   id: {
     type: Number,
     required: true,
+  },
+  inAi: {
+    type: Boolean,
+    default: false,
   },
 });
 const task = todos.getTodo(props.id);
@@ -23,27 +28,56 @@ provide("task", task);
         <BodyTaskTaskpartsLabel />
         <BodyTaskTaskpartsActions />
       </div>
-      <div v-if="task.description.length" class="todo-base-content">
-        <BodyTaskTaskpartsDescription />
-      </div>
-      <div v-if="task.users" class="todo-base-assignment">
-        <BodyTaskTaskpartsAssignUser />
-      </div>
       <div
-        v-if="task.hasDueDate"
-        class="todo-base-due-date flex items-center space-x-3 max"
+        class="todo-base-collapsable-content flex flex-col space-y-2 w-full relative"
       >
-        <BodyTaskTaskpartsDueDate />
-        <!-- task.hasDueDateAiInsight -->
-        <BodyTaskTaskpartsAiDueDateInsights />
-        <!-- AI notice ? -->
-      </div>
-      <div v-if="task.hasTags" class="todo-base-tags">
-        <BodyTaskTaskpartsTags />
-      </div>
-      <!-- task.hasAiInsights -->
-      <div v-if="true" class="todo-base-AI-insight w-full">
-        <BodyTaskTaskpartsAIInsights />
+        <div
+          :class="{
+            'max-h-24 overflow-hidden after:absolute after:bottom-0 after:left-0 after:w-full after:h-10 after:bg-gradient-to-t after:from-white after:to-transparent':
+              !task.isExpanded && inAi,
+          }"
+          class="todo-base-collapsable-content-inner flex flex-col space-y-2 w-full"
+        >
+          <div v-if="task.description.length" class="todo-base-content">
+            <BodyTaskTaskpartsDescription />
+          </div>
+          <div v-if="task.users" class="todo-base-assignment">
+            <BodyTaskTaskpartsAssignUser />
+          </div>
+          <div
+            v-if="task.hasDueDate"
+            class="todo-base-due-date flex items-center space-x-3 max"
+          >
+            <BodyTaskTaskpartsDueDate />
+            <!-- task.hasDueDateAiInsight -->
+            <BodyTaskTaskpartsAiDueDateInsights v-if="!inAi" />
+            <!-- AI notice ? -->
+          </div>
+          <div v-if="task.hasTags" class="todo-base-tags">
+            <BodyTaskTaskpartsTags />
+          </div>
+          <!-- task.hasAiInsights -->
+          <div v-if="!inAi" class="todo-base-AI-insight w-full">
+            <BodyTaskTaskpartsAIInsights />
+          </div>
+        </div>
+        <UButton
+          v-if="inAi"
+          :class="{
+            'absolute bottom-4': !task.isExpanded,
+          }"
+          class="cursor-pointer self-center rounded-full"
+          :icon="
+            task.isExpanded
+              ? 'ic:sharp-keyboard-arrow-up'
+              : 'ic:sharp-keyboard-arrow-down'
+          "
+          size="sm"
+          color="neutral"
+          variant="solid"
+          :label="task.isExpanded ? $t('collapse') : $t('expand')"
+          @click="task.expandContent(!task.isExpanded)"
+        />
       </div>
     </div>
   </div>
