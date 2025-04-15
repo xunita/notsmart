@@ -35,6 +35,7 @@ class Todo {
     this.dueDateAiInsight = data.dueDateAiInsight || null; // Due date of the task
     this.aiInsights = data.aiInsights || null; // AI Insight of the task
     this.aiInsightsExpanded = false; // AI Insight of the task
+    this.isExpanded = false; // more info of the task
     this.aiMessages = data.aiMessages || []; // old AI messages of the task
   }
 
@@ -100,6 +101,11 @@ class Todo {
   expandAiInsights(dir) {
     if (typeof dir === "boolean") this.aiInsightsExpanded = dir; // AI Insight of the task
   }
+
+  expandContent(dir) {
+    if (typeof dir === "boolean") this.isExpanded = dir; // more info of the task
+  }
+
   deleteAiInsights() {
     this.dueDateAiInsight = null; // Due date of the task
     this.aiInsights = null; // AI Insight of the task
@@ -172,6 +178,8 @@ class Todo {
       dueDateAiInsight: this.dueDateAiInsight,
       aiInsights: this.aiInsights,
       aiMessages: this.aiMessages,
+      aiInsightsExpanded: this.aiInsightsExpanded,
+      isExpanded: this.isExpanded,
     };
   }
 

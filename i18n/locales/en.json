@@ -60,5 +60,7 @@
   "stillOnTime": "Still on time",
   "maxTagsAllowedReached": "Maximum number of tags reached",
   "task": "Task",
-  "tasks": "Tasks"
+  "tasks": "Tasks",
+  "expand": "Expand",
+  "collapse": "Collapse"
 }
