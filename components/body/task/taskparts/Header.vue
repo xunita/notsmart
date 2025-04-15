@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const task = inject("task");
+const inAi = inject("inAi");
 </script>
 <template>
   <div class="w-full relative">
@@ -9,11 +10,16 @@ const task = inject("task");
       :alt="task.title"
       class="todo-base-header-img w-full h-10 object-cover rounded-t-md"
     />
-    <div class="absolute top-1.5 right-1.5">
+    <div v-if="!inAi" class="absolute top-1.5 right-1.5">
       <UDrawer class="z-20" :handle="false" direction="right">
         <BodyAskAIButton label="ask" variant="solid" size="sm" />
         <template #body>
-          <UIcon name="healthicons:artificial-intelligence" size="18" />
+          <div class="min-w-80 h-full flex flex-col items-center">
+            <UIcon name="healthicons:artificial-intelligence" size="18" />
+            <div class="w-full h-full">
+              <BodyAiBase />
+            </div>
+          </div>
         </template>
       </UDrawer>
     </div>

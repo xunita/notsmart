@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "sender": "user",
+    "content": "Hello!",
+    "jsonData": null,
+    "hasJsonData": false,
+    "isThinking": false,
+    "hasError": false,
+    "data": null
+  },
+  {
+    "id": 2,
+    "sender": "ai",
+    "content": "Hi there! How can I assist you today?",
+    "jsonData": null,
+    "hasJsonData": false,
+    "isThinking": false,
+    "hasError": false,
+    "data": null
+  },
+  {
+    "id": 3,
+    "sender": "user",
+    "content": "Can you tell me a joke?",
+    "jsonData": null,
+    "hasJsonData": false,
+    "isThinking": false,
+    "hasError": false,
+    "data": null
+  },
+  {
+    "id": 4,
+    "sender": "ai",
+    "content": "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    "jsonData": null,
+    "hasJsonData": false,
+    "isThinking": false,
+    "hasError": false,
+    "data": null
+  }
+]

@@ -3,6 +3,8 @@ class Message {
     this.id = id ?? new Date(Date.now()).getTime();
     this.sender = sender;
     this.content = content ?? "";
+    this.jsonData = null;
+    this.hasJsonData = false;
     this.isThinking = isThinking ?? false;
     this.hasError = hasError ?? false;
     this.data = data ?? null;
@@ -34,6 +36,11 @@ class Message {
 
   setData(data) {
     this.data = data;
+  }
+
+  setJsonData(jsonData) {
+    this.jsonData = jsonData ?? null;
+    this.hasJsonData = jsonData !== null;
   }
 }
 

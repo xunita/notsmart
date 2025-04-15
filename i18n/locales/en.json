@@ -62,5 +62,6 @@
   "task": "Task",
   "tasks": "Tasks",
   "expand": "Expand",
-  "collapse": "Collapse"
+  "collapse": "Collapse",
+  "aiMessagePlaceholder": "Ask me something about tasks..."
 }

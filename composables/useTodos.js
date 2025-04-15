@@ -7,13 +7,16 @@ import Message from "~/models/message";
 export const useTodos = () => {
   const storage = useStorage();
   // unmutable state by external code
+  //ai
+  const _aiIsThinking = useState("_aiIsThinking", () => false);
+  //
   const _todoPageState = storage.useLocalStorage(
     "nst-todoPageState",
     taskStatus[0]
   );
-  const _aiLast5Messages = storage.useLocalStorage("nst-aiLast5Messages", []);
   const _search = storage.useLocalStorage("nst-search", "");
   const _sortBy = storage.useLocalStorage("nst-sortBy", "createdAt-desc");
+  const _aiLast5Messages = useState("_aiLast5Messages", () => []);
   const _todos = useState("_todos", () => new Map());
   // load todos from localStorage
   const loadStorageTodos = () => {
@@ -26,7 +29,25 @@ export const useTodos = () => {
       });
     }
   };
+  // load messages from localStorage
+  const loadStorageMessages = () => {
+    let msgs = localStorage.getItem("nst-aiLast5Messages");
+    if (msgs) {
+      msgs = JSON.parse(msgs);
+      msgs.forEach((msg) => {
+        const message = new Message(msg);
+        const findIndex = _aiLast5Messages.value.findIndex(
+          (msg) => msg.id === message.id
+        );
+        if (findIndex === -1) {
+          _aiLast5Messages.value.push(message);
+        }
+      });
+    }
+  };
+
   loadStorageTodos();
+  loadStorageMessages();
   // computed state
   const search = computed({
     // getter
@@ -37,6 +58,10 @@ export const useTodos = () => {
     set(newValue) {
       _search.value = newValue;
     },
+  });
+
+  const aiIsThinking = computed(() => {
+    return _aiIsThinking.value;
   });
 
   const aiLast5Messages = computed(() => {
@@ -110,7 +135,19 @@ export const useTodos = () => {
 
   const addMessage = (m) => {
     const message = new Message(m);
-    _aiLast5Messages.value.push(message);
+    const findIndex = _aiLast5Messages.value.findIndex(
+      (msg) => msg.id === message.id
+    );
+    if (findIndex === -1) {
+      _aiLast5Messages.value.push(message);
+      saveMessagesToStorage();
+    }
+  };
+
+  const setAiIsThinking = (isThinking) => {
+    if (typeof isThinking === "boolean") {
+      _aiIsThinking.value = isThinking;
+    }
   };
 
   const getMessage = (id) => {
@@ -152,6 +189,12 @@ export const useTodos = () => {
 
   const saveTodosToStorage = () => {
     localStorage.setItem("nst-todos", getTodosStringified());
+  };
+  const saveMessagesToStorage = () => {
+    localStorage.setItem(
+      "nst-aiLast5Messages",
+      JSON.stringify(aiLast5Messages.value)
+    );
   };
 
   const getTodosStringified = () => {
@@ -274,6 +317,8 @@ export const useTodos = () => {
     hasAtLeastTwoInProgressTask,
     hasAtLeastTwoDoneTask,
     search,
+    aiIsThinking,
+    setAiIsThinking,
     addMessage,
     getMessage,
     getLast5Messages,

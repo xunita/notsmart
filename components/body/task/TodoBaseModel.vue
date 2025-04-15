@@ -11,8 +11,10 @@ const props = defineProps({
     default: false,
   },
 });
+const inAi = computed(() => props.inAi);
 const task = todos.getTodo(props.id);
 provide("task", task);
+provide("inAi", inAi);
 </script>
 <template>
   <div
@@ -57,7 +59,10 @@ provide("task", task);
             <BodyTaskTaskpartsTags />
           </div>
           <!-- task.hasAiInsights -->
-          <div v-if="task.hasAiInsights && !inAi" class="todo-base-AI-insight w-full">
+          <div
+            v-if="task.hasAiInsights && !inAi"
+            class="todo-base-AI-insight w-full"
+          >
             <BodyTaskTaskpartsAIInsights />
           </div>
         </div>

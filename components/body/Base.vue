@@ -27,10 +27,15 @@ const closeTaskEdit = () => {
             <BodyTaskTodoNewTask @update:close-task-edit="closeTaskEdit" />
           </template>
         </UModal>
-        <UDrawer :modal="false" :handle="false" direction="right">
+        <UDrawer  :handle="false" direction="right">
           <BodyAskAIButton label="ask" />
           <template #body>
-            <UIcon name="healthicons:artificial-intelligence" size="18" />
+            <div class="min-w-80 h-full flex flex-col items-center">
+              <UIcon name="healthicons:artificial-intelligence" size="18" />
+              <div class="w-full h-full">
+                <BodyAiBase />
+              </div>
+            </div>
           </template>
         </UDrawer>
       </div>
