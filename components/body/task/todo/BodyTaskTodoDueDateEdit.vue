@@ -53,7 +53,11 @@ const setDueDate = (newDate: CalendarDate) => {
         :items="items"
       />
     </UFormField>
-    <div v-if="value === $t('addDueDate')">
+    <div
+      v-if="value === $t('addDueDate')"
+      v-motion-pop-visible
+      class="rounded border border-blue-100 p-2 w-fit"
+    >
       <UCalendar
         v-model="date"
         class="max-w-64"
