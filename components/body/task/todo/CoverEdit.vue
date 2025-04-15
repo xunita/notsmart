@@ -34,7 +34,6 @@ const applyCover = (e, deletion = false) => {
       });
     });
     if (!loadedFile?.image) {
-      src.value = "/resources/img/cover.png";
       toast.add({
         title: $t("notValidImage"),
         color: "error",
