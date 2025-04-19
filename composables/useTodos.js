@@ -151,7 +151,7 @@ export const useTodos = () => {
           typeof todo === "object" ? getTodo(todo.id) : getTodo(todo);
         if (action === "update" || action === "insight") {
           if (!existingTodo) continue;
-          updateTodo(todo, false);
+          updateTodo(todo, false, true);
         } else if (action === "create") {
           addTodo(todo);
         } else if (action === "delete") {
@@ -312,7 +312,7 @@ export const useTodos = () => {
    * @param {number|string} todo.id - The unique identifier of the todo item.
    * @param {Map} _todos - A reactive map containing all todo items.
    */
-  const updateTodo = (todo, no_ai = true) => {
+  const updateTodo = (todo, no_ai = true, no_save = false) => {
     if (todo.id && hasTodo(todo.id)) {
       const existingTodo = getTodo(todo.id);
       if (existingTodo) {
@@ -320,7 +320,7 @@ export const useTodos = () => {
           existingTodo.update(todo);
         } else existingTodo.updateAiInsights(todo);
       }
-      saveTodosToStorage();
+      if (!no_save) saveTodosToStorage();
     }
   };
 
