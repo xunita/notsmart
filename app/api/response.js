@@ -14,6 +14,9 @@ const setAssistantResponse = (response, aiId) => {
       }
     }
     aiMessage.isThinking = false;
+    setTimeout(() => {
+      scrollToBottomById("notsmarttodos-chat");
+    }, 250);
     todos.saveMessagesToStorage();
   }
 };

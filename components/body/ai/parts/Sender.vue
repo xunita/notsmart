@@ -39,7 +39,11 @@ const sendMessage = () => {
         };
         todos.addMessage(aiMessage);
         askAssistant(data, aiMessage.id); // Update the key to re-render the input
-      }, 500);
+      }, 250);
+
+      setTimeout(() => {
+        scrollToBottomById("notsmarttodos-chat");
+      }, 350);
     }
   }
   setTimeout(() => {

@@ -11,6 +11,7 @@ export const useTodos = () => {
   const _aiIsThinking = useState("_aiIsThinking", () => false);
   const openAIChat = useState("openAIChat", () => false);
   const AITaskId = useState("AITask", () => null);
+  const reRender = useState("reRender", () => 0);
   // reset AITaskId when openAIChat is closed
   watch(
     () => openAIChat.value,
@@ -70,6 +71,12 @@ export const useTodos = () => {
       _search.value = newValue;
     },
   });
+
+  const setReRender = (value) => {
+    if (typeof value === "number") {
+      reRender.value = value > 99 ? 0 : value;
+    }
+  };
 
   const aiIsThinking = computed(() => {
     return _aiIsThinking.value;
@@ -151,7 +158,8 @@ export const useTodos = () => {
           typeof todo === "object" ? getTodo(todo.id) : getTodo(todo);
         if (action === "update" || action === "insight") {
           if (!existingTodo) continue;
-          updateTodo(todo, false, true);
+          existingTodo.update(todo);
+          setReRender(reRender.value + 1);
         } else if (action === "create") {
           addTodo(todo);
         } else if (action === "delete") {
@@ -312,7 +320,7 @@ export const useTodos = () => {
    * @param {number|string} todo.id - The unique identifier of the todo item.
    * @param {Map} _todos - A reactive map containing all todo items.
    */
-  const updateTodo = (todo, no_ai = true, no_save = false) => {
+  const updateTodo = (todo, no_ai = true) => {
     if (todo.id && hasTodo(todo.id)) {
       const existingTodo = getTodo(todo.id);
       if (existingTodo) {
@@ -320,7 +328,7 @@ export const useTodos = () => {
           existingTodo.update(todo);
         } else existingTodo.updateAiInsights(todo);
       }
-      if (!no_save) saveTodosToStorage();
+      saveTodosToStorage();
     }
   };
 
@@ -375,6 +383,7 @@ export const useTodos = () => {
     aiIsThinking,
     openAIChat,
     AITaskId,
+    reRender,
     setAiIsThinking,
     addMessage,
     getMessage,
@@ -397,5 +406,6 @@ export const useTodos = () => {
     setAiAction,
     setOpenAIChat,
     setAITaskId,
+    setReRender,
   };
 };
