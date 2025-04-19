@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      ASSISTANT_ENDPOINT: process.env.ASSISTANT_ENDPOINT,
+    },
+  },
   compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
   ssr: false,

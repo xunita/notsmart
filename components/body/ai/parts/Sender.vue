@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { askAssistant } from "~/app/controller/assistant";
 const todos = inject("todos");
 const { $t } = inject("nls");
+const task = inject("task");
 const focused = ref(false);
 const message = ref("");
 const messageLength = computed(() => message.value.length);
@@ -10,9 +12,34 @@ const sendMessage = () => {
   // Send message to the server
   if (!todos.aiIsThinking.value) {
     if (message.value.trim().length) {
-      console.log("Sending message:", message.value);
-      message.value = "";
-      messageKey.value++; // Update the key to re-render the input
+      const userMessage = {
+        sender: "user",
+        content: {
+          ui: JSON.parse(JSON.stringify(message.value)),
+          prompt: `${JSON.parse(
+            JSON.stringify(message.value)
+          )} \n today: ${new Date().toISOString()} \n today_getTime: ${new Date().getTime()} \n ${
+            task ? "unique task" : "list of tasks"
+          }: ${
+            task ? task.stringifyPrompt() : todos.getTodosStringifiedPrompt()
+          }`,
+        },
+      };
+      todos.addMessage(userMessage);
+      const data = todos.buildPrompt();
+      message.value = ""; // Clear the input
+      messageKey.value++;
+      //
+      setTimeout(() => {
+        const aiMessage = {
+          sender: "ai",
+          content: null,
+          isThinking: true,
+          id: new Date(Date.now()).getTime() + 1,
+        };
+        todos.addMessage(aiMessage);
+        askAssistant(data, aiMessage.id); // Update the key to re-render the input
+      }, 500);
     }
   }
   setTimeout(() => {

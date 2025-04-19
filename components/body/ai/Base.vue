@@ -1,6 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const todos = inject("todos");
+const getTask = computed(() => {
+  return todos.getTodo(todos.AITaskId.value) ?? null;
+});
+provide("task", getTask.value);
+</script>
 <template>
-  <div class="max-w-96 h-full flex flex-col items-center overflow-hidden">
+  <div class="w-80 h-full flex flex-col items-center overflow-hidden">
     <div>
       <UIcon name="healthicons:artificial-intelligence" size="18" /> {{ ` ` }}
     </div>

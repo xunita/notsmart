@@ -9,6 +9,17 @@ export const useTodos = () => {
   // unmutable state by external code
   //ai
   const _aiIsThinking = useState("_aiIsThinking", () => false);
+  const openAIChat = useState("openAIChat", () => false);
+  const AITaskId = useState("AITask", () => null);
+  // reset AITaskId when openAIChat is closed
+  watch(
+    () => openAIChat.value,
+    (opened) => {
+      if (!opened) {
+        AITaskId.value = null;
+      }
+    }
+  );
   //
   const _todoPageState = storage.useLocalStorage(
     "nst-todoPageState",
@@ -133,6 +144,40 @@ export const useTodos = () => {
   });
   // mutable functions
 
+  const setAiAction = (todos, action) => {
+    if (todos && todos.length > 0) {
+      for (const todo of todos) {
+        const existingTodo =
+          typeof todo === "object" ? getTodo(todo.id) : getTodo(todo);
+        if (action === "update" || action === "insight") {
+          if (!existingTodo) continue;
+          existingTodo.update(todo);
+        } else if (action === "create") {
+          addTodo(todo);
+        } else if (action === "delete") {
+          if (!existingTodo) continue;
+          removeTodo(existingTodo.id);
+        }
+      }
+      // saveTodosToStorage();
+      if (action === "update" || action === "insight") {
+        saveTodosToStorage();
+      }
+    }
+  };
+
+  const setAITaskId = (id) => {
+    if (!!id) {
+      AITaskId.value = id;
+    }
+  };
+
+  const setOpenAIChat = (open) => {
+    if (typeof open === "boolean") {
+      openAIChat.value = open;
+    }
+  };
+
   const addMessage = (m) => {
     const message = new Message(m);
     const findIndex = _aiLast5Messages.value.findIndex(
@@ -158,7 +203,7 @@ export const useTodos = () => {
     return _aiLast5Messages.value.slice(-10);
   };
 
-  const buildPrompt = (prompt) => {
+  const buildPrompt = () => {
     const last5Msg = getLast5Messages();
     const prompts = [];
     for (const msg of last5Msg) {
@@ -168,17 +213,17 @@ export const useTodos = () => {
           content: [
             {
               type: "text",
-              text: msg.content,
+              text: msg.content.prompt,
             },
           ],
         });
-      } else if (msg.sender === "ai" && !msg.isThinking && msg.content.length) {
+      } else if (msg.sender === "ai" && !msg.isThinking && msg.content) {
         prompts.push({
           role: "assistant",
           content: [
             {
               type: "text",
-              text: msg.content,
+              text: JSON.stringify(msg.content),
             },
           ],
         });
@@ -201,6 +246,16 @@ export const useTodos = () => {
     return JSON.stringify(
       Array.from(_todos.value.values()).map((todo) => todo.toJSON())
     );
+  };
+
+  const getTodosStringifiedPrompt = () => {
+    return JSON.stringify(
+      Array.from(_todos.value.values()).map((todo) => todo.toJsonPrompt())
+    );
+  };
+
+  const getTodosIdsStringified = () => {
+    return JSON.stringify(Array.from(_todos.value.keys()));
   };
 
   const removeTodoFromStorage = (id) => {
@@ -318,6 +373,8 @@ export const useTodos = () => {
     hasAtLeastTwoDoneTask,
     search,
     aiIsThinking,
+    openAIChat,
+    AITaskId,
     setAiIsThinking,
     addMessage,
     getMessage,
@@ -332,7 +389,13 @@ export const useTodos = () => {
     removeTodoFromStorage,
     deleteAllStorageTodos,
     saveTodosToStorage,
+    saveMessagesToStorage,
     setSortBy,
     getTodosStringified,
+    getTodosIdsStringified,
+    getTodosStringifiedPrompt,
+    setAiAction,
+    setOpenAIChat,
+    setAITaskId,
   };
 };

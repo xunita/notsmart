@@ -18,6 +18,7 @@ provide("inAi", inAi);
 </script>
 <template>
   <div
+    v-if="task"
     class="todo-base-container w-full flex-col space-y-2 rounded-md border border-blue-100/50"
   >
     <div class="todo-base-header">

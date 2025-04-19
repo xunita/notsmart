@@ -27,7 +27,12 @@ const closeTaskEdit = () => {
             <BodyTaskTodoNewTask @update:close-task-edit="closeTaskEdit" />
           </template>
         </UModal>
-        <UDrawer class="z-20 ai-drawer" :handle="false" direction="right">
+        <UDrawer
+          v-model:open="todos.openAIChat.value"
+          class="z-20 ai-drawer"
+          :handle="false"
+          direction="right"
+        >
           <BodyAskAIButton label="ask" />
           <template #body>
             <BodyAiBase class="ai-drawer-body" />

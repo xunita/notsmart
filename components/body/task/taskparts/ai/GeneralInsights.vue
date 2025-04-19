@@ -7,7 +7,6 @@ const task = inject("task");
     class="todo-base-ai-generalinsight flex flex-col items-center space-y-1 px-4 rounded pt-2 pb-4 bg-amber-50/75 w-full"
   >
     <UIcon name="healthicons:artificial-intelligence" size="18" />
-    What an awesome task!
     <div class="todo-base-ai-generalinsight-insights w-full">
       <div v-html="task.aiInsights"></div>
     </div>

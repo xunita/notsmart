@@ -9,6 +9,13 @@ const messages = computed(() => {
 const closeTask = () => {
   noSpecificTask.value = true;
 };
+provide("noSpecificTask", noSpecificTask);
+//
+onMounted(() => {
+  setTimeout(() => {
+    scrollToBottomById("notsmarttodos-chat");
+  }, 250);
+});
 </script>
 <template>
   <div
@@ -31,9 +38,10 @@ const closeTask = () => {
     </div>
     <div
       :class="{
-        'overflow-y-auto py-4': !task || noSpecificTask,
+        'py-4': !task || noSpecificTask,
+        'items-center justify-center': !messages.length,
       }"
-      class="ai-messages w-ful h-full flex flex-col items-center justify-center"
+      class="ai-messages w-ful h-full flex flex-col py-4 px-1"
     >
       <div
         v-if="messages.length"

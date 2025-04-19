@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { $t } = inject("nls");
+const emits = defineEmits(["update:ai-btn-click"]);
 const props = defineProps({
   useLabel: {
     type: Boolean,
@@ -18,6 +19,9 @@ const props = defineProps({
     default: "md",
   },
 });
+const sendClick = () => {
+  emits("update:ai-btn-click");
+};
 </script>
 <template>
   <UButton
@@ -27,5 +31,6 @@ const props = defineProps({
     :variant="variant"
     icon="healthicons:artificial-intelligence"
     :label="useLabel ? $t(label) : ''"
+    @click="sendClick"
   />
 </template>

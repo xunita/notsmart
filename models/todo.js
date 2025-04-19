@@ -93,7 +93,20 @@ class Todo {
   update(data = {}) {
     for (const key in data) {
       if (key !== "id" && Object.hasOwn(this, key)) {
-        this[key] = data[key];
+        // manage date string attribute
+        if (
+          key === "dueDate" ||
+          key === "createdAt" ||
+          key === "statusUpdatedAt"
+        ) {
+          if (typeof data[key] === "string") {
+            this[key] = new Date(data[key]);
+          } else if (data[key] instanceof Date) {
+            this[key] = data[key];
+          } else {
+            this[key] = null;
+          }
+        } else this[key] = data[key];
       }
     }
     this.updatedAt = new Date(Date.now()); // updated at timestamp
@@ -183,8 +196,26 @@ class Todo {
     };
   }
 
-  stringify() {
-    return JSON.stringify(this.toJSON());
+  toJsonPrompt() {
+    return {
+      id: this.id,
+      title: this.title,
+      label: this.label,
+      description: this.description,
+      assignments: this.assignments,
+      dueDate: this.dueDate,
+      tags: this.tags,
+      status: this.status,
+      createdAt: this.createdAt,
+      lastStatus: this.lastStatus,
+      statusUpdatedAt: this.statusUpdatedAt,
+      updatedAt: this.updatedAt,
+      aiInsights: this.aiInsights,
+    };
+  }
+
+  stringifyPrompt() {
+    return JSON.stringify(this.toJsonPrompt());
   }
 }
 
