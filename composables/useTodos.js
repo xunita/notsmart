@@ -151,7 +151,7 @@ export const useTodos = () => {
           typeof todo === "object" ? getTodo(todo.id) : getTodo(todo);
         if (action === "update" || action === "insight") {
           if (!existingTodo) continue;
-          existingTodo.update(todo);
+          updateTodo(todo, false);
         } else if (action === "create") {
           addTodo(todo);
         } else if (action === "delete") {
