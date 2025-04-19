@@ -8,7 +8,7 @@ const task = inject("task");
   >
     <UIcon name="healthicons:artificial-intelligence" size="18" />
     <div class="todo-base-ai-generalinsight-insights w-full">
-      <div v-html="task.aiInsights"></div>
+      <div v-html="task.aiInsights" class="!text-sm"></div>
     </div>
   </div>
 </template>

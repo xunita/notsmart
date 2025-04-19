@@ -23,7 +23,7 @@ onMounted(() => {
     :class="{
       'overflow-y-auto': messages.length,
     }"
-    class="w-ful h-full relative py-3 my-1"
+    class="w-ful h-full relative py-4"
   >
     <div
       v-if="task && !noSpecificTask"
