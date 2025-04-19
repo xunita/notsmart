@@ -21,9 +21,10 @@ onMounted(() => {
   <div
     id="notsmarttodos-chat"
     :class="{
+      'py-4': !task,
       'overflow-y-auto': messages.length,
     }"
-    class="w-ful h-full relative py-4"
+    class="w-ful h-full relative my-1"
   >
     <div
       v-if="task && !noSpecificTask"
