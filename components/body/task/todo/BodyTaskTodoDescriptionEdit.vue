@@ -6,7 +6,7 @@ const editMode = inject("editMode");
 const description = ref(editMode && task !== null ? task.description : "");
 watch(description, (newDescription) => {
   emits("update:description", {
-    value: newDescription,
+    value: newDescription.trim(),
     key: "description",
   });
 });
