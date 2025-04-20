@@ -24,13 +24,7 @@ onMounted(() => {
     }"
     class="w-ful h-full flex flex-col gap-1 overflow-hidden"
   >
-    <div
-      v-if="task && !noSpecificTask"
-      :class="{
-        'absolute w-full': !messages.length,
-      }"
-      class="bg-white !z-10 pt-2 pb-1"
-    >
+    <div v-if="task && !noSpecificTask" class="bg-white !z-10 pt-2 pb-1">
       <BodyAiTodoMiniature
         :key="todos.reRender.value"
         in-ai
