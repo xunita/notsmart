@@ -19,6 +19,7 @@ const setAssistantResponse = (response, aiId) => {
     }, 250);
     todos.saveMessagesToStorage();
   }
+  todos.setAiIsThinking(false);
 };
 
 export { setAssistantResponse };

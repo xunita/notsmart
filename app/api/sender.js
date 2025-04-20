@@ -32,6 +32,7 @@ const getAssistantResponse = (data = [], aiId) => {
         };
         todos.saveMessagesToStorage();
       }
+      todos.setAiIsThinking(false);
     });
 };
 

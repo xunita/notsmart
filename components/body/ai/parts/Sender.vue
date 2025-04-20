@@ -40,6 +40,7 @@ const sendMessage = () => {
           id: new Date(Date.now()).getTime() + 1,
         };
         todos.addMessage(aiMessage);
+        todos.setAiIsThinking(true);
         askAssistant(data, aiMessage.id); // Update the key to re-render the input
       }, 250);
 
