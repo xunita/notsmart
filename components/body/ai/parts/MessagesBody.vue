@@ -21,18 +21,16 @@ onMounted(() => {
   <div
     id="notsmarttodos-chat"
     :class="{
-      'py-4': !task,
-      'overflow-y-auto': messages.length,
+      'py-3': !task,
     }"
-    class="w-ful h-full relative my-1"
+    class="w-ful h-full flex flex-col gap-1 overflow-hidden"
   >
     <div
       v-if="task && !noSpecificTask"
       :class="{
-        'sticky top-0': messages.length,
         'absolute w-full': !messages.length,
       }"
-      class="bg-white z-10 pt-4"
+      class="bg-white !z-10 pt-2 pb-1"
     >
       <BodyAiTodoMiniature
         :key="todos.reRender.value"
@@ -44,8 +42,10 @@ onMounted(() => {
     <div
       :class="{
         'items-center justify-center': !messages.length,
+        'overflow-y-auto': messages.length,
+        'my-1': task,
       }"
-      class="ai-messages w-ful h-full flex flex-col py-4 px-1"
+      class="ai-messages w-ful h-full flex flex-col px-1"
     >
       <div
         v-if="messages.length"

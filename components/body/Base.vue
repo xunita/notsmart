@@ -29,7 +29,7 @@ const closeTaskEdit = () => {
         </UModal>
         <UDrawer
           v-model:open="todos.openAIChat.value"
-          class="z-20 ai-drawer"
+          class="z-10 ai-drawer"
           :handle="false"
           direction="right"
         >
