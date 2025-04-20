@@ -21,7 +21,7 @@ onMounted(() => {
   <div
     id="notsmarttodos-chat"
     :class="{
-      'py-3': !task,
+      'pt-3 pb-1': !task,
     }"
     class="w-ful h-full flex flex-col gap-1 overflow-hidden"
   >
@@ -43,7 +43,7 @@ onMounted(() => {
       :class="{
         'items-center justify-center': !messages.length,
         'overflow-y-auto': messages.length,
-        'my-1': task,
+        'mt-2 mb-1': task,
       }"
       class="ai-messages w-ful h-full flex flex-col px-1"
     >
