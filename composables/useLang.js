@@ -32,8 +32,6 @@ export const useLang = () => {
       });
     }
   };
-  // set default lang
-  setLang(_code.value);
 
   // return state and functions
   return {
