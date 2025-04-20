@@ -175,7 +175,7 @@ export const useTodos = () => {
   };
 
   const setAITaskId = (id) => {
-    if (!!id) {
+    if (!!id || id === null) {
       AITaskId.value = id;
     }
   };

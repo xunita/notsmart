@@ -34,7 +34,12 @@ onMounted(() => {
       }"
       class="bg-white z-10 pt-4"
     >
-      <BodyAiTodoMiniature in-ai :id="task.id" @update:no-task="closeTask" />
+      <BodyAiTodoMiniature
+        :key="todos.reRender.value"
+        in-ai
+        :id="task.id"
+        @update:no-task="closeTask"
+      />
     </div>
     <div
       :class="{

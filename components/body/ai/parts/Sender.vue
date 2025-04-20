@@ -19,9 +19,11 @@ const sendMessage = () => {
           prompt: `${JSON.parse(
             JSON.stringify(message.value)
           )} \n today: ${new Date().toISOString()} \n today_getTime: ${new Date().getTime()} \n ${
-            task ? "unique task" : "list of tasks"
+            task.value ? "unique task" : "list of tasks"
           }: ${
-            task ? task.stringifyPrompt() : todos.getTodosStringifiedPrompt()
+            task.value
+              ? task.value.stringifyPrompt()
+              : todos.getTodosStringifiedPrompt()
           }`,
         },
       };

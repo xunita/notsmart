@@ -3,7 +3,7 @@ const todos = inject("todos");
 const getTask = computed(() => {
   return todos.getTodo(todos.AITaskId.value) ?? null;
 });
-provide("task", getTask.value);
+provide("task", getTask);
 </script>
 <template>
   <div class="w-80 h-full flex flex-col items-center overflow-hidden">

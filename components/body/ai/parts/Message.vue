@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Message from "~/models/message";
 const todos = inject("todos");
+const task = inject("task");
 const { $t } = inject("nls");
 const props = defineProps({
   message: {
@@ -57,7 +58,7 @@ const items = computed(() => {
         >
           <div v-html="message.content.answer"></div>
           <div
-            v-if="items.length && message.content.action !== 'delete'"
+            v-if="!task && items.length && message.content.action !== 'delete'"
             class="relative w-full flex flex-col items-center"
           >
             <UCarousel
@@ -68,6 +69,7 @@ const items = computed(() => {
             >
               <BodyAiTodoMiniature
                 v-if="todos.hasTodo(item.id)"
+                :key="todos.reRender.value"
                 :id="item.id"
                 in-ai
               />
