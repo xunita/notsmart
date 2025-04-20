@@ -19,7 +19,6 @@ onMounted(() => {
 </script>
 <template>
   <div
-    id="notsmarttodos-chat"
     :class="{
       'pt-3 pb-1': !task,
     }"
@@ -40,6 +39,7 @@ onMounted(() => {
       />
     </div>
     <div
+      id="notsmarttodos-chat"
       :class="{
         'items-center justify-center': !messages.length,
         'overflow-y-auto': messages.length,
