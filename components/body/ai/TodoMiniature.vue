@@ -9,6 +9,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  inMessage: {
+    type: Boolean,
+    default: false,
+  },
 });
 const closeTask = () => {
   todos.setAITaskId(null);
@@ -18,6 +22,7 @@ const closeTask = () => {
   <div class="relative">
     <BodyTaskTodoBaseModel :id="props.id" :inAi="props.inAi" />
     <UButton
+      v-if="!props.inMessage"
       size="md"
       color="neutral"
       variant="solid"

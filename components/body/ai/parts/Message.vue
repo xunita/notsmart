@@ -72,6 +72,7 @@ const items = computed(() => {
                 :key="todos.reRender.value"
                 :id="item.id"
                 in-ai
+                in-message
               />
               <div
                 v-else
