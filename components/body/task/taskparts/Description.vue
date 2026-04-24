@@ -16,7 +16,7 @@ const isLong = computed(() => {
     </span>
     <button
       v-if="isLong"
-      class="text-xs text-primary-500 hover:text-primary-400 mt-1 block"
+      class="text-xs font-semibold text-gray-500 hover:text-gray-400 mt-1 block"
       @click="expanded = !expanded"
     >
       {{ expanded ? 'Show less' : 'Show more' }}
